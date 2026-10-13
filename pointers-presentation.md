@@ -9,15 +9,14 @@ theme:
 Как пользоваться
 ================
 
-Запуск презентации с исполнением кода:
+Запуск презентации:
 
 ```bash
-presenterm -x pointers-presentation.md
+presenterm pointers-presentation.md
 ```
 
-* Слайды-ответы: код — обычные C-программы в `pointers/*.c`
-* Слева — сниппет `bash +exec` (`gcc` собирает и запускает файл), справа — код
-* `Ctrl+e` выполняет команду, вывод показывается под ней
+* Слайды-ответы: код — обычные C-программы в `pointers/*.c` (во всю ширину слайда)
+* Код не исполняется: ожидаемый вывод указан комментарием рядом с `printf`
 * Порядок: слайд с условием, затем слайд с ответом
 
 <!-- end_slide -->
@@ -53,23 +52,11 @@ int *p = &x;
 Задача 1. Ответ
 ===============
 
-<!-- column_layout: [2, 3] -->
-
-<!-- column: 0 -->
-
-```bash +exec
-gcc pointers/task01.c -o /tmp/out
-/tmp/out
-```
-
-<!-- column: 1 -->
-
 ```file
 path: pointers/task01.c
 language: c
 ```
 
-<!-- reset_layout -->
 
 <!-- end_slide -->
 
@@ -86,23 +73,11 @@ language: c
 Задача 2. Ответ
 ===============
 
-<!-- column_layout: [2, 3] -->
-
-<!-- column: 0 -->
-
-```bash +exec
-gcc pointers/task02.c -o /tmp/out
-/tmp/out
-```
-
-<!-- column: 1 -->
-
 ```file
 path: pointers/task02.c
 language: c
 ```
 
-<!-- reset_layout -->
 
 В C аргументы передаются **по значению**, поэтому `bad_swap` меняет только свои копии.
 
@@ -121,23 +96,11 @@ language: c
 Задача 3. Ответ
 ===============
 
-<!-- column_layout: [2, 3] -->
-
-<!-- column: 0 -->
-
-```bash +exec
-gcc pointers/task03.c -o /tmp/out
-/tmp/out
-```
-
-<!-- column: 1 -->
-
 ```file
 path: pointers/task03.c
 language: c
 ```
 
-<!-- reset_layout -->
 
 <!-- end_slide -->
 
@@ -159,23 +122,11 @@ void   my_strcpy(char *dst, const char *src);
 Задача 4. Ответ
 ===============
 
-<!-- column_layout: [2, 3] -->
-
-<!-- column: 0 -->
-
-```bash +exec
-gcc pointers/task04.c -o /tmp/out
-/tmp/out
-```
-
-<!-- column: 1 -->
-
 ```file
 path: pointers/task04.c
 language: c
 ```
 
-<!-- reset_layout -->
 
 <!-- end_slide -->
 
@@ -235,23 +186,11 @@ printf("%d\n", *a);
 Задача 6. Ответ
 ===============
 
-<!-- column_layout: [2, 3] -->
-
-<!-- column: 0 -->
-
-```bash +exec
-gcc pointers/task06.c -o /tmp/out
-/tmp/out
-```
-
-<!-- column: 1 -->
-
 ```file
 path: pointers/task06.c
 language: c
 ```
 
-<!-- reset_layout -->
 
 * Звёздочка относится к **имени**, а не к типу
 * `b = &x` записывает адрес в `int` (ошибка или предупреждение)
@@ -275,23 +214,11 @@ for (int i = 0; i < 4; i++) printf("%d ", b[i]);
 Задача 7. Ответ
 ===============
 
-<!-- column_layout: [2, 3] -->
-
-<!-- column: 0 -->
-
-```bash +exec
-gcc pointers/task07.c -o /tmp/out
-/tmp/out
-```
-
-<!-- column: 1 -->
-
 ```file
 path: pointers/task07.c
 language: c
 ```
 
-<!-- reset_layout -->
 
 * little-endian (x86-64): `4 3 2 1`
 * big-endian: `1 2 3 4`
@@ -319,23 +246,11 @@ printf("%d", *q);
 Задача 8. Ответ
 ===============
 
-<!-- column_layout: [2, 3] -->
-
-<!-- column: 0 -->
-
-```bash +exec
-gcc pointers/task08.c -o /tmp/out
-/tmp/out
-```
-
-<!-- column: 1 -->
-
 ```file
 path: pointers/task08.c
 language: c
 ```
 
-<!-- reset_layout -->
 
 `*q` это `p`, то есть **адрес** `x`. Печать указателя через `%d` ошибочна (для адреса нужен `%p`).
 
@@ -355,23 +270,11 @@ language: c
 Задача 9. Ответ
 ===============
 
-<!-- column_layout: [2, 3] -->
-
-<!-- column: 0 -->
-
-```bash +exec
-gcc pointers/task09.c -o /tmp/out
-/tmp/out
-```
-
-<!-- column: 1 -->
-
 ```file
 path: pointers/task09.c
 language: c
 ```
 
-<!-- reset_layout -->
 
 У `void` нет размера, поэтому разыменовать `void *` нельзя. `size` нужен по той же причине.
 
@@ -399,23 +302,11 @@ printf("%td\n", (char *)p - (char *)a);
 Задача 10. Ответ
 ================
 
-<!-- column_layout: [2, 3] -->
-
-<!-- column: 0 -->
-
-```bash +exec
-gcc pointers/task10.c -o /tmp/out
-/tmp/out
-```
-
-<!-- column: 1 -->
-
 ```file
 path: pointers/task10.c
 language: c
 ```
 
-<!-- reset_layout -->
 
 * `p += 3` сдвигает на `3 * sizeof(int)` байт, поэтому `0x100C`
 * Для `double` сдвиг 24 байта, а разность указателей по-прежнему 3
@@ -439,23 +330,11 @@ char *p1 = str;
 Задача 11. Ответ
 ================
 
-<!-- column_layout: [2, 3] -->
-
-<!-- column: 0 -->
-
-```bash +exec
-gcc pointers/task11.c -o /tmp/out
-/tmp/out
-```
-
-<!-- column: 1 -->
-
 ```file
 path: pointers/task11.c
 language: c
 ```
 
-<!-- reset_layout -->
 
 `a[i]` по определению это `*(a + i)`, а сложение коммутативно, поэтому `4[str]` корректно. В реальном коде так не пишут.
 
@@ -485,23 +364,11 @@ void push(int i) {
 Задача 12. Ответ
 ================
 
-<!-- column_layout: [2, 3] -->
-
-<!-- column: 0 -->
-
-```bash +exec
-gcc pointers/task12.c -o /tmp/out
-/tmp/out
-```
-
-<!-- column: 1 -->
-
 ```file
 path: pointers/task12.c
 language: c
 ```
 
-<!-- reset_layout -->
 
 <!-- end_slide -->
 
@@ -534,23 +401,11 @@ int main() {
 Задача 13. Ответ
 ================
 
-<!-- column_layout: [2, 3] -->
-
-<!-- column: 0 -->
-
-```bash +exec
-gcc pointers/task13.c -o /tmp/out
-/tmp/out
-```
-
-<!-- column: 1 -->
-
 ```file
 path: pointers/task13.c
 language: c
 ```
 
-<!-- reset_layout -->
 
 * **а)** Segfault (SIGSEGV), формально UB
 * **в)** Допустимы только `p == NULL` и `free(p)`; разыменование и арифметика с `NULL` это UB
@@ -577,23 +432,11 @@ int mul(int a, int b) { return a * b; }
 Задача 14. Ответ (а, б)
 =======================
 
-<!-- column_layout: [2, 3] -->
-
-<!-- column: 0 -->
-
-```bash +exec
-gcc pointers/task14a.c -o /tmp/out
-/tmp/out
-```
-
-<!-- column: 1 -->
-
 ```file
 path: pointers/task14a.c
 language: c
 ```
 
-<!-- reset_layout -->
 
 **в)** Первое объявляет указатель на функцию, второе функцию, возвращающую `int *`. Скобки вокруг `*f` обязательны.
 
@@ -602,23 +445,11 @@ language: c
 Задача 14. Ответ (г)
 ====================
 
-<!-- column_layout: [2, 3] -->
-
-<!-- column: 0 -->
-
-```bash +exec
-gcc pointers/task14b.c -o /tmp/out
-/tmp/out
-```
-
-<!-- column: 1 -->
-
 ```file
 path: pointers/task14b.c
 language: c
 ```
 
-<!-- reset_layout -->
 
 Смена знака результата компаратора меняет порядок сортировки.
 
@@ -642,23 +473,11 @@ struct struct3 { char a; short b; char c; int d; };
 Задача 15. Ответ
 ================
 
-<!-- column_layout: [2, 3] -->
-
-<!-- column: 0 -->
-
-```bash +exec
-gcc pointers/task15.c -o /tmp/out
-/tmp/out
-```
-
-<!-- column: 1 -->
-
 ```file
 path: pointers/task15.c
 language: c
 ```
 
-<!-- reset_layout -->
 
 Размер структуры кратен выравниванию самого строгого поля, иначе в массиве таких структур поля второго элемента оказались бы невыровненными.
 
@@ -694,23 +513,11 @@ language: c
 Задача 16. is_aligned
 =====================
 
-<!-- column_layout: [2, 3] -->
-
-<!-- column: 0 -->
-
-```bash +exec
-gcc pointers/task16.c -o /tmp/out
-/tmp/out
-```
-
-<!-- column: 1 -->
-
 ```file
 path: pointers/task16.c
 language: c
 ```
 
-<!-- reset_layout -->
 
 <!-- end_slide -->
 
@@ -729,23 +536,11 @@ struct bad { char a; double b; char c; int d; short e; };
 Задача 17. Ответ
 ================
 
-<!-- column_layout: [2, 3] -->
-
-<!-- column: 0 -->
-
-```bash +exec
-gcc pointers/task17.c -o /tmp/out
-/tmp/out
-```
-
-<!-- column: 1 -->
-
 ```file
 path: pointers/task17.c
 language: c
 ```
 
-<!-- reset_layout -->
 
 Поля по убыванию размера дают минимальный размер. Компилятор сам поля не переставляет.
 
@@ -771,23 +566,11 @@ struct NormalHeader { uint8_t type; uint16_t length; uint32_t id; };
 Задача 18. Ответ
 ================
 
-<!-- column_layout: [2, 3] -->
-
-<!-- column: 0 -->
-
-```bash +exec
-gcc pointers/task18.c -o /tmp/out
-/tmp/out
-```
-
-<!-- column: 1 -->
-
 ```file
 path: pointers/task18.c
 language: c
 ```
 
-<!-- reset_layout -->
 
 * **б)** Раскладка в памяти должна совпадать с форматом протокола или файла
 * **в)** Невыровненный доступ медленнее, на ARM может дать аппаратную ошибку, а указатель на поле упакованной структуры может быть невыровненным
@@ -812,23 +595,11 @@ struct flags { unsigned a:4; unsigned :0; unsigned b:4; };
 Задача 19. Ответ
 ================
 
-<!-- column_layout: [2, 3] -->
-
-<!-- column: 0 -->
-
-```bash +exec
-gcc pointers/task19.c -o /tmp/out
-/tmp/out
-```
-
-<!-- column: 1 -->
-
 ```file
 path: pointers/task19.c
 language: c
 ```
 
-<!-- reset_layout -->
 
 * **б)** Безымянное поле шириной 0 заставляет следующее поле начаться с нового слова (без него у `flags` было бы 4)
 * **в)** Упаковка и порядок битов определяются реализацией и endianness
@@ -853,23 +624,11 @@ printf("%#x\n", val.u);
 Задача 20. Ответ
 ================
 
-<!-- column_layout: [2, 3] -->
-
-<!-- column: 0 -->
-
-```bash +exec
-gcc pointers/task20.c -o /tmp/out
-/tmp/out
-```
-
-<!-- column: 1 -->
-
 ```file
 path: pointers/task20.c
 language: c
 ```
 
-<!-- reset_layout -->
 
 * Размер union это максимальный размер поля, округлённый до выравнивания (5 -> 8)
 * Применение: экономия памяти, если поля не используются одновременно, и type punning (в C допустимо, в C++ формально UB)
