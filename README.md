@@ -5,13 +5,21 @@
 Тема — `catppuccin-latte` (задана во frontmatter презентации).
 
 ```
-presentation.md          # единый файл презентации
+presentation.md            # вводная презентация (демо возможностей)
 code/
-  hello.c                # hello world, исполняется по Ctrl+E
-  person.c               # struct Person + greet, динамическая подсветка
-  dynamic_array.c        # malloc / free; фрагмент виден, весь файл запускается
+  hello.c                  # hello world, исполняется по Ctrl+E
+  person.c                 # struct Person + greet, динамическая подсветка
+  dynamic_array.c          # malloc / free; фрагмент виден, весь файл запускается
+pointers-presentation.md   # колода задач: слайд с условием + слайд с ответом
+pointers/
+  taskNN.c                 # код задач — обычные C-программы, единый источник правды
+tools/                     # headless-прогон презентации (см. «Проверка колоды»)
+AGENTS.md                  # правила создания новых презентаций
 README.md
 ```
+
+> Как делать новые презентации в этом проекте (структура слайдов, конвенции,
+> проверка перед коммитом) — см. [`AGENTS.md`](AGENTS.md).
 
 ## Запуск
 
@@ -19,7 +27,12 @@ README.md
 presenterm presentation.md           # обычный показ
 
 presenterm -x -X presentation.md     # + исполнение кода
+
+presenterm -x pointers-presentation.md   # колода задач: ответы 1, 6, 8, 10 запускают код
 ```
+
+`-x` нужен колоде задач: на слайдах с ответами задач 1, 6, 8 и 10 стоит
+`file +exec` (`Ctrl+E` компилирует и запускает соответствующий `pointers/taskNN.c`).
 
 `-x` — разрешает `+exec` (слайд «Hello, C», запуск по `Ctrl+E`).
 `-X` — разрешает `+exec_replace` (слайд «Две колонки», запуск автоматический).
@@ -108,6 +121,22 @@ gcc -Wall -Wextra -std=c17 code/dynamic_array.c -o /tmp/dynamic_array
 
 > ⚠️ Не запускайте `-x` / `-X` на чужих презентациях: код выполняется на вашей машине
 > без изоляции.
+
+## Проверка колоды
+
+`tools/sweep.sh` прогоняет презентацию в псевдотерминале фиксированного размера
+(presenterm требует настоящий TTY), листает слайды и снимает ANSI-разметку:
+
+```sh
+tools/sweep.sh presentation.md 170 10 -x -X       # вводная колода
+tools/sweep.sh pointers-presentation.md 170 30 -x # колода задач, широкая
+tools/sweep.sh pointers-presentation.md 120 30 -x # колода задач, узкая
+```
+
+Аргументы: `<колода> [ширина] [число слайдов] [флаги presenterm...]`. Смотреть
+вывод удобно через `less -R`. Что проверять: нет строк `error` / `disabled` /
+`not found`, все цели `path:` на месте, итоговый номер слайда совпадает
+(число `<!-- end_slide -->` + 2). Подробнее — в `AGENTS.md`, §9.
 
 ## Экспорт
 
