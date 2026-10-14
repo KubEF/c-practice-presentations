@@ -4,6 +4,9 @@ sub_title: presenterm + C
 author: Ваше имя
 theme:
   name: catppuccin-latte
+  override:
+    code:
+      line_numbers: true
 ---
 
 Что такое presenterm?

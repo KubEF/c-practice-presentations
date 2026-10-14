@@ -4,6 +4,9 @@ sub_title: "20 задач с проверкой кода"
 author: "Практикум по C"
 theme:
   name: catppuccin-latte
+  override:
+    code:
+      line_numbers: true
 ---
 
 Как пользоваться
