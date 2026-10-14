@@ -55,11 +55,12 @@ int *p = &x;
 Задача 1. Ответ
 ===============
 
+`pointers/task01.c`
+
 ```file
 path: pointers/task01.c
 language: c
 ```
-
 
 <!-- end_slide -->
 
@@ -76,11 +77,14 @@ language: c
 Задача 2. Ответ
 ===============
 
+`pointers/task02.c`
+
 ```file
 path: pointers/task02.c
 language: c
+start_line: 1
+end_line: 9
 ```
-
 
 В C аргументы передаются **по значению**, поэтому `bad_swap` меняет только свои копии.
 
@@ -99,11 +103,14 @@ language: c
 Задача 3. Ответ
 ===============
 
+`pointers/task03.c`
+
 ```file
 path: pointers/task03.c
 language: c
+start_line: 1
+end_line: 8
 ```
-
 
 <!-- end_slide -->
 
@@ -125,11 +132,14 @@ void   my_strcpy(char *dst, const char *src);
 Задача 4. Ответ
 ===============
 
+`pointers/task04.c`
+
 ```file
 path: pointers/task04.c
 language: c
+start_line: 1
+end_line: 12
 ```
-
 
 <!-- end_slide -->
 
@@ -189,11 +199,12 @@ printf("%d\n", *a);
 Задача 6. Ответ
 ===============
 
+`pointers/task06.c`
+
 ```file
 path: pointers/task06.c
 language: c
 ```
-
 
 * Звёздочка относится к **имени**, а не к типу
 * `b = &x` записывает адрес в `int` (ошибка или предупреждение)
@@ -217,11 +228,12 @@ for (int i = 0; i < 4; i++) printf("%d ", b[i]);
 Задача 7. Ответ
 ===============
 
+`pointers/task07.c`
+
 ```file
 path: pointers/task07.c
 language: c
 ```
-
 
 * little-endian (x86-64): `4 3 2 1`
 * big-endian: `1 2 3 4`
@@ -249,11 +261,12 @@ printf("%d", *q);
 Задача 8. Ответ
 ===============
 
+`pointers/task08.c`
+
 ```file
 path: pointers/task08.c
 language: c
 ```
-
 
 `*q` это `p`, то есть **адрес** `x`. Печать указателя через `%d` ошибочна (для адреса нужен `%p`).
 
@@ -273,11 +286,14 @@ language: c
 Задача 9. Ответ
 ===============
 
+`pointers/task09.c`
+
 ```file
 path: pointers/task09.c
 language: c
+start_line: 1
+end_line: 11
 ```
-
 
 У `void` нет размера, поэтому разыменовать `void *` нельзя. `size` нужен по той же причине.
 
@@ -305,11 +321,12 @@ printf("%td\n", (char *)p - (char *)a);
 Задача 10. Ответ
 ================
 
+`pointers/task10.c`
+
 ```file
 path: pointers/task10.c
 language: c
 ```
-
 
 * `p += 3` сдвигает на `3 * sizeof(int)` байт, поэтому `0x100C`
 * Для `double` сдвиг 24 байта, а разность указателей по-прежнему 3
@@ -333,11 +350,12 @@ char *p1 = str;
 Задача 11. Ответ
 ================
 
+`pointers/task11.c`
+
 ```file
 path: pointers/task11.c
 language: c
 ```
-
 
 `a[i]` по определению это `*(a + i)`, а сложение коммутативно, поэтому `4[str]` корректно. В реальном коде так не пишут.
 
@@ -367,11 +385,14 @@ void push(int i) {
 Задача 12. Ответ
 ================
 
+`pointers/task12.c`
+
 ```file
 path: pointers/task12.c
 language: c
+start_line: 1
+end_line: 18
 ```
-
 
 <!-- end_slide -->
 
@@ -404,11 +425,14 @@ int main() {
 Задача 13. Ответ
 ================
 
+`pointers/task13.c`
+
 ```file
 path: pointers/task13.c
 language: c
+start_line: 1
+end_line: 5
 ```
-
 
 * **а)** Segfault (SIGSEGV), формально UB
 * **в)** Допустимы только `p == NULL` и `free(p)`; разыменование и арифметика с `NULL` это UB
@@ -435,11 +459,14 @@ int mul(int a, int b) { return a * b; }
 Задача 14. Ответ (а, б)
 =======================
 
+`pointers/task14a.c`
+
 ```file
 path: pointers/task14a.c
 language: c
+start_line: 1
+end_line: 9
 ```
-
 
 **в)** Первое объявляет указатель на функцию, второе функцию, возвращающую `int *`. Скобки вокруг `*f` обязательны.
 
@@ -448,11 +475,14 @@ language: c
 Задача 14. Ответ (г)
 ====================
 
+`pointers/task14b.c`
+
 ```file
 path: pointers/task14b.c
 language: c
+start_line: 1
+end_line: 7
 ```
-
 
 Смена знака результата компаратора меняет порядок сортировки.
 
@@ -476,11 +506,12 @@ struct struct3 { char a; short b; char c; int d; };
 Задача 15. Ответ
 ================
 
+`pointers/task15.c`
+
 ```file
 path: pointers/task15.c
 language: c
 ```
-
 
 Размер структуры кратен выравниванию самого строгого поля, иначе в массиве таких структур поля второго элемента оказались бы невыровненными.
 
@@ -516,11 +547,14 @@ language: c
 Задача 16. is_aligned
 =====================
 
+`pointers/task16.c`
+
 ```file
 path: pointers/task16.c
 language: c
+start_line: 1
+end_line: 7
 ```
-
 
 <!-- end_slide -->
 
@@ -539,11 +573,12 @@ struct bad { char a; double b; char c; int d; short e; };
 Задача 17. Ответ
 ================
 
+`pointers/task17.c`
+
 ```file
 path: pointers/task17.c
 language: c
 ```
-
 
 Поля по убыванию размера дают минимальный размер. Компилятор сам поля не переставляет.
 
@@ -569,11 +604,12 @@ struct NormalHeader { uint8_t type; uint16_t length; uint32_t id; };
 Задача 18. Ответ
 ================
 
+`pointers/task18.c`
+
 ```file
 path: pointers/task18.c
 language: c
 ```
-
 
 * **б)** Раскладка в памяти должна совпадать с форматом протокола или файла
 * **в)** Невыровненный доступ медленнее, на ARM может дать аппаратную ошибку, а указатель на поле упакованной структуры может быть невыровненным
@@ -598,11 +634,12 @@ struct flags { unsigned a:4; unsigned :0; unsigned b:4; };
 Задача 19. Ответ
 ================
 
+`pointers/task19.c`
+
 ```file
 path: pointers/task19.c
 language: c
 ```
-
 
 * **б)** Безымянное поле шириной 0 заставляет следующее поле начаться с нового слова (без него у `flags` было бы 4)
 * **в)** Упаковка и порядок битов определяются реализацией и endianness
@@ -627,11 +664,12 @@ printf("%#x\n", val.u);
 Задача 20. Ответ
 ================
 
+`pointers/task20.c`
+
 ```file
 path: pointers/task20.c
 language: c
 ```
-
 
 * Размер union это максимальный размер поля, округлённый до выравнивания (5 -> 8)
 * Применение: экономия памяти, если поля не используются одновременно, и type punning (в C допустимо, в C++ формально UB)
