@@ -1,6 +1,6 @@
 ---
 title: "Указатели и выравнивание"
-sub_title: "20 задач с проверкой кода"
+sub_title: "12 задач с проверкой кода"
 author: "Практикум по C"
 theme:
   name: catppuccin-latte
@@ -27,9 +27,8 @@ presenterm pointers-presentation.md
 Содержание
 ==========
 
-1. **Базовые (1-8):** разыменование, `swap`, массивы, строки, `const`, типы, порядок байтов, многоуровневые указатели
-2. **Средние (9-14):** `void *`, арифметика, массивы и указатели, стек, `NULL`, указатели на функции
-3. **Выравнивание (15-20):** `sizeof` структур, правила, упаковка, `#pragma pack`, битовые поля, `union`
+1. **Базовые (1-6, 8):** разыменование, `swap`, массивы, строки, `const`, типы, многоуровневые указатели
+2. **Средние (9-11, 13-14):** `void *`, арифметика, массивы и указатели, `NULL`, указатели на функции
 
 Допущения: x86-64, `sizeof(int) == 4`, `sizeof(void*) == 8`, GCC/Clang.
 
@@ -55,8 +54,6 @@ int *p = &x;
 Задача 1. Ответ
 ===============
 
-`pointers/task01.c`
-
 ```file
 path: pointers/task01.c
 language: c
@@ -77,12 +74,10 @@ language: c
 Задача 2. Ответ
 ===============
 
-`pointers/task02.c`
-
 ```file
 path: pointers/task02.c
 language: c
-start_line: 1
+start_line: 3
 end_line: 13
 ```
 
@@ -103,12 +98,10 @@ end_line: 13
 Задача 3. Ответ
 ===============
 
-`pointers/task03.c`
-
 ```file
 path: pointers/task03.c
 language: c
-start_line: 1
+start_line: 3
 end_line: 8
 ```
 
@@ -131,8 +124,6 @@ void   my_strcpy(char *dst, const char *src);
 
 Задача 4. Ответ
 ===============
-
-`pointers/task04.c`
 
 ```file
 path: pointers/task04.c
@@ -199,8 +190,6 @@ printf("%d\n", *a);
 Задача 6. Ответ
 ===============
 
-`pointers/task06.c`
-
 ```file
 path: pointers/task06.c
 language: c
@@ -209,34 +198,6 @@ language: c
 * Звёздочка относится к **имени**, а не к типу
 * `b = &x` записывает адрес в `int` (ошибка или предупреждение)
 * В указатель записан адрес, а не копия значения
-
-<!-- end_slide -->
-
-Задача 7. Порядок байтов
-========================
-
-```c
-int x = 0x01020304;
-unsigned char *b = (unsigned char *)&x;
-for (int i = 0; i < 4; i++) printf("%d ", b[i]);
-```
-
-Что выведет программа на x86-64? А на big-endian машине?
-
-<!-- end_slide -->
-
-Задача 7. Ответ
-===============
-
-`pointers/task07.c`
-
-```file
-path: pointers/task07.c
-language: c
-```
-
-* little-endian (x86-64): `4 3 2 1`
-* big-endian: `1 2 3 4`
 
 <!-- end_slide -->
 
@@ -261,8 +222,6 @@ printf("%d", *q);
 Задача 8. Ответ
 ===============
 
-`pointers/task08.c`
-
 ```file
 path: pointers/task08.c
 language: c
@@ -285,8 +244,6 @@ language: c
 
 Задача 9. Ответ
 ===============
-
-`pointers/task09.c`
 
 ```file
 path: pointers/task09.c
@@ -321,8 +278,6 @@ printf("%td\n", (char *)p - (char *)a);
 Задача 10. Ответ
 ================
 
-`pointers/task10.c`
-
 ```file
 path: pointers/task10.c
 language: c
@@ -350,58 +305,12 @@ char *p1 = str;
 Задача 11. Ответ
 ================
 
-`pointers/task11.c`
-
 ```file
 path: pointers/task11.c
 language: c
 ```
 
 `a[i]` по определению это `*(a + i)`, а сложение коммутативно, поэтому `4[str]` корректно. В реальном коде так не пишут.
-
-<!-- end_slide -->
-
-Задача 12. Стек на указателях
-=============================
-
-```c
-int stack[SIZE];
-int *current   = stack;
-int *stack_end = stack + SIZE;
-```
-
-* **а)** Реализуйте `int push(int v)` и `int pop(int *out)`: возвращают 0 при переполнении или опустошении, `exit` не использовать
-* **б)** Что не так с версией со слайда лекции?
-
-```c
-void push(int i) {
-    *(current++) = i;
-    if (current == stack_end) { printf("Stack overflow!\n"); exit(1); }
-}
-```
-
-<!-- end_slide -->
-
-Задача 12. Ответ
-================
-
-`pointers/task12.c`
-
-```file
-path: pointers/task12.c
-language: c
-start_line: 1
-end_line: 20
-```
-
-<!-- end_slide -->
-
-Задача 12. Что не так в версии лекции
-=====================================
-
-* Проверка стоит **после** записи: когда записан последний допустимый элемент, программа уже считает это переполнением. Стек нельзя заполнить целиком
-* `exit` убивает программу вместо возврата ошибки вызывающему коду
-* На слайде потеряна закрывающая скобка
 
 <!-- end_slide -->
 
@@ -425,12 +334,10 @@ int main() {
 Задача 13. Ответ
 ================
 
-`pointers/task13.c`
-
 ```file
 path: pointers/task13.c
 language: c
-start_line: 1
+start_line: 3
 end_line: 5
 ```
 
@@ -459,12 +366,10 @@ int mul(int a, int b) { return a * b; }
 Задача 14. Ответ (а, б)
 =======================
 
-`pointers/task14a.c`
-
 ```file
 path: pointers/task14a.c
 language: c
-start_line: 1
+start_line: 3
 end_line: 17
 ```
 
@@ -475,204 +380,14 @@ end_line: 17
 Задача 14. Ответ (г)
 ====================
 
-`pointers/task14b.c`
-
 ```file
 path: pointers/task14b.c
 language: c
-start_line: 1
+start_line: 4
 end_line: 7
 ```
 
 Смена знака результата компаратора меняет порядок сортировки.
-
-<!-- end_slide -->
-
-Задача 15. sizeof структур
-==========================
-
-```c
-struct A       { char a; int b; };
-struct struct1 { char *p; char c; };
-struct struct2 { short s; char c; char pad[1]; };
-struct struct3 { char a; short b; char c; int d; };
-```
-
-* **а)** Найдите `sizeof` каждой структуры и смещения полей (`offsetof`)
-* **б)** Почему `sizeof(struct A)` не равен 5?
-
-<!-- end_slide -->
-
-Задача 15. Ответ
-================
-
-`pointers/task15.c`
-
-```file
-path: pointers/task15.c
-language: c
-```
-
-Размер структуры кратен выравниванию самого строгого поля, иначе в массиве таких структур поля второго элемента оказались бы невыровненными.
-
-<!-- end_slide -->
-
-Задача 16. Правила выравнивания
-===============================
-
-* **а)** Выровнены ли значения:
-  * `short` по `0x1001`, `short` по `0x1002`
-  * `int` по `0x1006`, `int` по `0x1008`
-  * `double` по `0x1004`, `double` по `0x1008`
-  * `char` по `0x1003`
-* **б)** Напишите `int is_aligned(const void *p, size_t align)`
-
-<!-- end_slide -->
-
-Задача 16. Ответ
-================
-
-| Значение         | Выровнено? |
-|------------------|------------|
-| `short` @ 0x1001 | нет        |
-| `short` @ 0x1002 | да         |
-| `int` @ 0x1006   | нет        |
-| `int` @ 0x1008   | да         |
-| `double` @ 0x1004| нет        |
-| `double` @ 0x1008| да         |
-| `char` @ 0x1003  | да (`char` выравнивания не требует) |
-
-<!-- end_slide -->
-
-Задача 16. is_aligned
-=====================
-
-`pointers/task16.c`
-
-```file
-path: pointers/task16.c
-language: c
-start_line: 1
-end_line: 7
-```
-
-<!-- end_slide -->
-
-Задача 17. Упаковка перестановкой полей
-=======================================
-
-```c
-struct bad { char a; double b; char c; int d; short e; };
-```
-
-* **а)** Найдите `sizeof(struct bad)`
-* **б)** Переставьте поля так, чтобы размер стал минимальным. Сколько получилось?
-
-<!-- end_slide -->
-
-Задача 17. Ответ
-================
-
-`pointers/task17.c`
-
-```file
-path: pointers/task17.c
-language: c
-```
-
-Поля по убыванию размера дают минимальный размер. Компилятор сам поля не переставляет.
-
-<!-- end_slide -->
-
-Задача 18. #pragma pack
-=======================
-
-```c
-#pragma pack(push, 1)
-struct PackedHeader { uint8_t type; uint16_t length; uint32_t id; };
-#pragma pack(pop)
-
-struct NormalHeader { uint8_t type; uint16_t length; uint32_t id; };
-```
-
-* **а)** Найдите `sizeof` обеих структур
-* **б)** Для чего нужна упаковка?
-* **в)** Какую цену за неё платят?
-
-<!-- end_slide -->
-
-Задача 18. Ответ
-================
-
-`pointers/task18.c`
-
-```file
-path: pointers/task18.c
-language: c
-```
-
-* **б)** Раскладка в памяти должна совпадать с форматом протокола или файла
-* **в)** Невыровненный доступ медленнее, на ARM может дать аппаратную ошибку, а указатель на поле упакованной структуры может быть невыровненным
-
-<!-- end_slide -->
-
-Задача 19. Битовые поля
-=======================
-
-```c
-struct str1  { int big1:31; int small1:1; int big2:31; int small2:1; };
-struct str2  { int big1:31; int big2:31;  int small1:1; int small2:1; };
-struct flags { unsigned a:4; unsigned :0; unsigned b:4; };
-```
-
-* **а)** Найдите `sizeof` каждой структуры (GCC/Clang, x86-64)
-* **б)** Зачем нужно поле `:0`?
-* **в)** Почему результат может отличаться на другом компиляторе?
-
-<!-- end_slide -->
-
-Задача 19. Ответ
-================
-
-`pointers/task19.c`
-
-```file
-path: pointers/task19.c
-language: c
-```
-
-* **б)** Безымянное поле шириной 0 заставляет следующее поле начаться с нового слова (без него у `flags` было бы 4)
-* **в)** Упаковка и порядок битов определяются реализацией и endianness
-
-<!-- end_slide -->
-
-Задача 20. union
-================
-
-```c
-union value { unsigned int u; float f; } val;
-val.f = 1.0f;
-printf("%#x\n", val.u);
-```
-
-* **а)** Что выведет программа и чему равен `sizeof(val)`?
-* **б)** Чему равен `sizeof(union { char c[5]; int i; })`?
-* **в)** Для чего используют `union`?
-
-<!-- end_slide -->
-
-Задача 20. Ответ
-================
-
-`pointers/task20.c`
-
-```file
-path: pointers/task20.c
-language: c
-```
-
-* Размер union это максимальный размер поля, округлённый до выравнивания (5 -> 8)
-* Применение: экономия памяти, если поля не используются одновременно, и type punning (в C допустимо, в C++ формально UB)
 
 <!-- end_slide -->
 
