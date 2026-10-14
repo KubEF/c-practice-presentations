@@ -83,7 +83,7 @@ language: c
 path: pointers/task02.c
 language: c
 start_line: 1
-end_line: 9
+end_line: 13
 ```
 
 В C аргументы передаются **по значению**, поэтому `bad_swap` меняет только свои копии.
@@ -138,7 +138,7 @@ void   my_strcpy(char *dst, const char *src);
 path: pointers/task04.c
 language: c
 start_line: 1
-end_line: 12
+end_line: 13
 ```
 
 <!-- end_slide -->
@@ -391,7 +391,7 @@ void push(int i) {
 path: pointers/task12.c
 language: c
 start_line: 1
-end_line: 18
+end_line: 20
 ```
 
 <!-- end_slide -->
@@ -465,7 +465,7 @@ int mul(int a, int b) { return a * b; }
 path: pointers/task14a.c
 language: c
 start_line: 1
-end_line: 9
+end_line: 17
 ```
 
 **в)** Первое объявляет указатель на функцию, второе функцию, возвращающую `int *`. Скобки вокруг `*f` обязательны.
