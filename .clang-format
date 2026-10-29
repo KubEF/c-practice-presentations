@@ -1,0 +1,9 @@
+# Base style stays LLVM; only the indentation is overridden to the 4 spaces
+# used by every C file in this repository (keys shown in the decks).
+# LLVM default is IndentWidth: 2.
+BasedOnStyle: LLVM
+IndentWidth: 4
+TabWidth: 4
+# LLVM collapses one-line functions onto a single line, which would rewrite the
+# code shown on the slides; keep the multi-line form the deck files use.
+AllowShortFunctionsOnASingleLine: None

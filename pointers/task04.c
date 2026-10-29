@@ -12,9 +12,18 @@ void my_strcpy(char *dst, const char *src) {
         ;
 }
 
+// void my_strcpy(char *dst, const char *src) {
+//     while (*src) {
+//         *dst = *src;
+//         *dst++;
+//         *src++;
+//     }
+//     *dst = '\0';
+// }
+
 int main(void) {
     char buf[16];
     my_strcpy(buf, "Hello");
-    printf("%zu %s\n", my_strlen(buf), buf);   // 5 Hello
+    printf("%zu %s\n", my_strlen(buf), buf); // 5 Hello
     return 0;
 }

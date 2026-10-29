@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!-- Подсветка для typst-слайдов (themes/slides.typ): цвета токенов
+     Coldark-Cold в том виде, в каком их рисует presenterm с темой
+     latte-projector (сняты с рендера). Комментарии #3c526d — 6.6:1 к фону
+     блока #e3eaf2; встроенная тема typst красит их светло-серым. -->
+<plist version="1.0">
+<dict>
+  <key>name</key><string>Coldark-Cold (latte-projector)</string>
+  <key>settings</key>
+  <array>
+    <dict>
+      <key>settings</key>
+      <dict>
+        <key>background</key><string>#e3eaf2</string>
+        <key>foreground</key><string>#111b27</string>
+      </dict>
+    </dict>
+    <dict>
+      <key>name</key><string>Comment</string>
+      <key>scope</key><string>comment</string>
+      <key>settings</key><dict><key>foreground</key><string>#3c526d</string></dict>
+    </dict>
+    <dict>
+      <key>name</key><string>Keyword</string>
+      <key>scope</key><string>keyword, storage</string>
+      <key>settings</key><dict><key>foreground</key><string>#a04900</string></dict>
+    </dict>
+    <dict>
+      <key>name</key><string>Type</string>
+      <key>scope</key><string>storage.type, support.type, entity.name.type</string>
+      <key>settings</key><dict><key>foreground</key><string>#005a8e</string></dict>
+    </dict>
+    <dict>
+      <key>name</key><string>String</string>
+      <key>scope</key><string>string, constant.character</string>
+      <key>settings</key><dict><key>foreground</key><string>#116b00</string></dict>
+    </dict>
+    <dict>
+      <key>name</key><string>Number</string>
+      <key>scope</key><string>constant.numeric, constant.language</string>
+      <key>settings</key><dict><key>foreground</key><string>#755f00</string></dict>
+    </dict>
+    <dict>
+      <key>name</key><string>Function</string>
+      <key>scope</key><string>entity.name.function, support.function, meta.function-call</string>
+      <key>settings</key><dict><key>foreground</key><string>#7c00aa</string></dict>
+    </dict>
+    <dict>
+      <key>name</key><string>Preprocessor</string>
+      <key>scope</key><string>meta.preprocessor, keyword.control.import, keyword.control.directive</string>
+      <key>settings</key><dict><key>foreground</key><string>#af00af</string></dict>
+    </dict>
+    <dict>
+      <key>name</key><string>Variable</string>
+      <key>scope</key><string>variable.parameter, variable.other</string>
+      <key>settings</key><dict><key>foreground</key><string>#111b27</string></dict>
+    </dict>
+    <dict>
+      <key>name</key><string>Operator</string>
+      <key>scope</key><string>keyword.operator</string>
+      <key>settings</key><dict><key>foreground</key><string>#111b27</string></dict>
+    </dict>
+  </array>
+</dict>
+</plist>

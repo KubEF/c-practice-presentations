@@ -1,0 +1,224 @@
+---
+# Локальная тема для бледного проектора: та же вёрстка, что у catppuccin-latte
+# (см. тему catppuccin-latte из presenterm), но цвета пересчитаны под слабый
+# проектор: приглушённые пастельные оттенки Latte на нём выцветают и перестают
+# различаться.
+#
+#   * весь текст темнее — контраст к фону base не ниже 4.5:1 (AA для крупного
+#     текста), для обычного текста — не ниже 7:1 (AAA);
+#   * «жёлтый» сдвинут в тёмно-янтарный (#a15c07), «зелёный» — в глубокий
+#     зелёный (#0b5f38): их различают и оттенок (~120° по кругу), и яркость;
+#     раньше это была самая частая жалоба (заголовок слайда vs inline-код);
+#   * подзаголовок и место на титульном слайде переведены с sapphire на mauve:
+#     тёмный sapphire и тёмный зелёный заголовка оказались почти одного тона;
+#   * подсветка кода переведена с `GitHub` на `Coldark-Cold`: у GitHub цвет
+#     комментариев (#969896) даёт 2.9:1 к фону блока, у Coldark-Cold — 7.1:1,
+#     и все остальные токены не ниже 5.4:1. Пастельная подсветка на бледном
+#     проекторе выцветает первой. Вернуть прежний вид — одна строка:
+#     `theme_name: GitHub`.
+#   * серые (surface/overlay) остались светлыми, но разведены сильнее, чтобы
+#     рамка блока кода и фон были видны на выцветшем экране.
+#
+# Плотность (расходится с catppuccin-latte, вёрстка та же):
+#   * `code.padding.vertical: 1 -> 0` и `slide_title.padding_bottom: 1 -> 0`:
+#     пустая полоса над первой строкой кода была 92px при рендере 1600px
+#     (1 строка внутри рамки + 2.7 строки разрыва до заголовка) и стала 42px
+#     (-54%); ключа `margin` у блока кода в presenterm 0.16.1 нет, разрыв над
+#     рамкой создаёт именно `slide_title.padding_bottom`. Вернуть прежние
+#     отступы — те же две строки со значением 1.
+#
+# Проверка чисел: tools/check-contrast.py themes/latte-projector.yaml
+#
+# Подключение в колоде (theme.name и theme.path вместе нельзя):
+#
+#   theme:
+#     path: themes/latte-projector.yaml
+#     override:
+#       code:
+#         line_numbers: true
+default:
+  margin:
+    percent: 4
+  colors:
+    foreground: palette:text
+    background: palette:base
+
+slide_title:
+  alignment: center
+  padding_bottom: 0
+  padding_top: 1
+  colors:
+    foreground: palette:yellow
+  bold: true
+  font_size: 2
+
+code:
+  alignment: left
+  margin:
+    percent: 3
+  theme_name: Coldark-Cold
+  padding:
+    horizontal: 2
+    vertical: 1
+
+execution_output:
+  colors:
+    foreground: palette:text
+    background: palette:surface0
+  status:
+    running:
+      foreground: palette:sky
+    success:
+      foreground: palette:green
+    failure:
+      foreground: palette:red
+    not_started:
+      foreground: palette:yellow
+  padding:
+    horizontal: 2
+    vertical: 1
+
+pty_output:
+  colors:
+    foreground: palette:text
+    background: palette:surface0
+  cursor:
+    highlight_colors:
+      foreground: palette:surface0
+      background: palette:text
+
+inline_code:
+  colors:
+    foreground: palette:green
+
+intro_slide:
+  title:
+    alignment: center
+    colors:
+      foreground: palette:green
+    font_size: 2
+  subtitle:
+    alignment: center
+    colors:
+      foreground: palette:mauve
+  event:
+    alignment: center
+    colors:
+      foreground: palette:green
+  location:
+    alignment: center
+    colors:
+      foreground: palette:mauve
+  date:
+    alignment: center
+    colors:
+      foreground: palette:yellow
+  author:
+    alignment: center
+    colors:
+      foreground: palette:subtext1
+    positioning: page_bottom
+  footer: false
+
+headings:
+  h1:
+    prefix: "██"
+    colors:
+      foreground: palette:teal
+  h2:
+    prefix: "▓▓▓"
+    colors:
+      foreground: palette:mauve
+  h3:
+    prefix: "▒▒▒▒"
+    colors:
+      foreground: palette:blue
+  h4:
+    prefix: "░░░░░"
+    colors:
+      foreground: palette:red
+  h5:
+    prefix: "░░░░░░"
+    colors:
+      foreground: palette:green
+  h6:
+    prefix: "░░░░░░░"
+    colors:
+      foreground: palette:peach
+
+block_quote:
+  prefix: "▍ "
+  colors:
+    foreground: palette:text
+    background: palette:surface0
+    prefix: palette:yellow
+
+alert:
+  prefix: "▍ "
+  base_colors:
+    foreground: palette:text
+    background: palette:surface0
+  styles:
+    note:
+      color: palette:blue
+    tip:
+      color: palette:green
+    important:
+      color: palette:mauve
+    warning:
+      color: palette:yellow
+    caution:
+      color: palette:red
+
+typst:
+  colors:
+    foreground: palette:text
+    background: palette:surface0
+
+footer:
+  style: template
+  right: "{current_slide} / {total_slides}"
+
+modals:
+  selection_colors:
+    foreground: palette:sapphire
+
+mermaid:
+  background: transparent
+  theme: default
+
+d2:
+  theme: 100
+
+layout_grid:
+  color: palette:blue
+
+palette:
+  colors:
+    rosewater: "b45337"
+    flamingo: "c93a3a"
+    pink: "b01f8c"
+    mauve: "7b2ce0"
+    red: "c20b32"
+    maroon: "bc2433"
+    peach: "b8471a"
+    yellow: "a15c07"
+    green: "0b5f38"
+    teal: "0e6f75"
+    sky: "086a94"
+    sapphire: "156979"
+    blue: "0f4ce0"
+    lavender: "3f52e6"
+
+    text: "2b2d3c"
+    subtext1: "3b3d50"
+    subtext0: "4a4c60"
+    overlay2: "5c5f75"
+    overlay1: "6d7086"
+    overlay0: "82869b"
+    surface2: "a4aabc"
+    surface1: "b6bcc9"
+    surface0: "c6cbd8"
+    base: "eff1f5"
+    mantle: "e6e9ef"
+    crust: "dce0e8"

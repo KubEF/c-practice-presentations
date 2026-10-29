@@ -15,7 +15,7 @@ theme:
 _presenterm_ — презентации прямо в терминале, слайды пишутся в **Markdown**.
 
 * Подсветка кода на C (и 50+ других языков).
-* Код вынесен в `code/*.c` и подключается в слайды.
+* Код вынесен в отдельные `.c` файлы и подключается в слайды.
 * Исполнение кода по `Ctrl+E`.
 * Колонки, таблицы, экспорт в PDF и HTML.
 
@@ -28,10 +28,10 @@ _presenterm_ — презентации прямо в терминале, сла
 Hello, C
 ---
 
-Код лежит в `code/hello.c` и подключён как внешний сниппет:
+Код лежит в `hello.c` и подключён как внешний сниппет:
 
 ```file +exec +line_numbers
-path: code/hello.c
+path: hello.c
 language: c
 ```
 
@@ -51,7 +51,7 @@ cc -Wall -Wextra -std=c17 hello.c -o hello && ./hello
 Динамическая подсветка работает и для внешних файлов:
 
 ```file {3-6|8-9|12-15|all} +line_numbers
-path: code/person.c
+path: person.c
 language: c
 ```
 
@@ -66,10 +66,10 @@ language: c
 
 ### Динамическая память
 
-Фрагмент `code/dynamic_array.c`, строки 6–9:
+Фрагмент `dynamic_array.c`, строки 6–9:
 
 ```file +line_numbers
-path: code/dynamic_array.c
+path: dynamic_array.c
 language: c
 start_line: 6
 end_line: 9
@@ -78,7 +78,7 @@ end_line: 9
 Собрать и запустить весь файл:
 
 ```bash +exec_replace +no_background
-gcc -Wall -Wextra -std=c17 code/dynamic_array.c -o /tmp/dynamic_array
+gcc -Wall -Wextra -std=c17 dynamic_array.c -o /tmp/dynamic_array
 /tmp/dynamic_array
 ```
 
@@ -92,6 +92,29 @@ gcc -Wall -Wextra -std=c17 code/dynamic_array.c -o /tmp/dynamic_array
 | `int`    | 4      |
 | `double` | 8      |
 | `void *` | 8      |
+
+<!-- end_slide -->
+
+Диаграммы
+---
+
+Сниппет `d2` с атрибутом `+render` превращается в картинку инструментом
+[d2](https://d2lang.com) (нужен `d2` в `PATH`):
+
+```d2 +render +width:80%
+source: "hello.c"
+compiler: "gcc -Wall -Wextra -std=c17"
+binary: "./hello"
+terminal: "терминал"
+
+source -> compiler: сборка
+compiler -> binary
+binary -> terminal: "Ctrl+E"
+```
+
+<!-- pause -->
+
+Масштаб картинки задаётся атрибутом `+width:N%` (уходит в `d2 --scale`).
 
 <!-- end_slide -->
 

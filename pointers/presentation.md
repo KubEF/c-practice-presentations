@@ -2,7 +2,7 @@
 title: "Практика по C"
 sub_title: "Указатели и выравнивание"
 theme:
-  name: catppuccin-latte
+  path: ../themes/latte-projector.yaml
   override:
     code:
       line_numbers: true
@@ -28,8 +28,8 @@ int *p = &x;
 Задача 1. Ответ
 ===============
 
-```file +exec
-path: pointers/task01.c
+```file 
+path: task01.c
 language: c
 ```
 
@@ -49,7 +49,7 @@ language: c
 ===============
 
 ```file
-path: pointers/task02.c
+path: task02.c
 language: c
 start_line: 3
 end_line: 13
@@ -73,7 +73,7 @@ end_line: 13
 ===============
 
 ```file
-path: pointers/task03.c
+path: task03.c
 language: c
 start_line: 3
 end_line: 8
@@ -100,24 +100,13 @@ void   my_strcpy(char *dst, const char *src);
 ===============
 
 ```file
-path: pointers/task04.c
+path: task04.c
 language: c
 start_line: 1
 end_line: 13
 ```
 
 `while ((*dst++ = *src++))` копирует символ и проверяет **его же**: присваивание возвращает скопированное значение, поэтому цикл останавливается на `'\0'`, который уже записан в `dst`. Постфиксный `++` сдвигает оба указателя после использования. Можно написать менее изящно:
-
-```c
-void my_strcpy(char *dst, const char *src) {
-    while (*src) {
-        *dst = *src;
-        *dst++;
-        *src++;
-    }
-    *dst = '\0';
-}
-```
 
 <!-- end_slide -->
 
@@ -149,7 +138,7 @@ p3 = &b;
 
 <!-- column: 0 -->
 
-| Строка | Компилируется? | Причина                         |
+| Строка | комп. | Причина                         |
 |--------|----------------|---------------------------------|
 | (6)    | нет            | данные через `p1` менять нельзя |
 | (7)    | да             | сам указатель менять можно      |
@@ -200,8 +189,8 @@ printf("%d\n", *a);
 Задача 6. Ответ
 ===============
 
-```file +exec
-path: pointers/task06.c
+```file 
+path: task06.c
 language: c
 ```
 
@@ -232,8 +221,8 @@ printf("%d", *q);
 Задача 8. Ответ
 ===============
 
-```file +exec
-path: pointers/task08.c
+```file 
+path: task08.c
 language: c
 ```
 
@@ -241,7 +230,7 @@ language: c
 
 <!-- end_slide -->
 
-Задача 9. void * и универсальный swap
+Задача 9. `void *` и универсальный `swap`
 =====================================
 
 Напишите `void swap(void *a, void *b, size_t size)` для значений любого типа.
@@ -256,7 +245,7 @@ language: c
 ===============
 
 ```file
-path: pointers/task09.c
+path: task09.c
 language: c
 start_line: 1
 end_line: 11
@@ -288,8 +277,8 @@ printf("%td\n", (char *)p - (char *)a);
 Задача 10. Ответ
 ================
 
-```file +exec
-path: pointers/task10.c
+```file 
+path: task10.c
 language: c
 ```
 
@@ -315,7 +304,7 @@ char *p1 = str;
 ================
 
 ```file
-path: pointers/task11.c
+path: task11.c
 language: c
 ```
 
@@ -346,7 +335,7 @@ int main() {
 ================
 
 ```file
-path: pointers/task13.c
+path: task13.c
 language: c
 start_line: 3
 end_line: 5
@@ -378,7 +367,7 @@ int mul(int a, int b) { return a * b; }
 =======================
 
 ```file
-path: pointers/task14a.c
+path: task14a.c
 language: c
 start_line: 15
 end_line: 25
@@ -392,7 +381,7 @@ end_line: 25
 ====================
 
 ```file
-path: pointers/task14b.c
+path: task14b.c
 language: c
 start_line: 4
 end_line: 7

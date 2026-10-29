@@ -2,7 +2,7 @@
 title: "Практика по C"
 sub_title: "Указатели: память и интерфейсы"
 theme:
-  path: themes/latte-projector.yaml
+  path: ../themes/latte-projector.yaml
   override:
     code:
       line_numbers: true
@@ -34,7 +34,7 @@ void set_by_pointer(item_t *m);
 ===============
 
 ```file
-path: pointers-alt/task01.c
+path: task01.c
 language: c
 start_line: 4
 end_line: 20
@@ -71,7 +71,7 @@ int get_odd(const int *src, size_t n, int *dst) {
 ===============
 
 ```file
-path: pointers-alt/task02.c
+path: task02.c
 language: c
 start_line: 4
 end_line: 24
@@ -105,7 +105,7 @@ int *get_squares(size_t n) {
 ===============
 
 ```file
-path: pointers-alt/task03.c
+path: task03.c
 language: c
 ```
 
@@ -133,7 +133,7 @@ const char *p = "Hello";
 ===============
 
 ```file
-path: pointers-alt/task04.c
+path: task04.c
 language: c
 ```
 
@@ -168,7 +168,7 @@ b[0] = 9;
 ===============
 
 ```file
-path: pointers-alt/task05.c
+path: task05.c
 language: c
 ```
 
@@ -199,7 +199,7 @@ int (*get_op(char op))(int, int);
 ===============
 
 ```file
-path: pointers-alt/task06.c
+path: task06.c
 language: c
 start_line: 15
 end_line: 38
@@ -239,7 +239,7 @@ free(r);                   // (4)
 ===============
 
 ```file
-path: pointers-alt/task07.c
+path: task07.c
 language: c
 ```
 
@@ -272,7 +272,7 @@ void push_front(node_t **head, int value);
 ===================
 
 ```file
-path: pointers-alt/task08.c
+path: task08.c
 language: c
 start_line: 4
 end_line: 16
@@ -288,7 +288,7 @@ end_line: 16
 ===================
 
 ```file
-path: pointers-alt/task08.c
+path: task08.c
 language: c
 start_line: 18
 end_line: 30

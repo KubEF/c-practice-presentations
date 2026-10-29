@@ -2,7 +2,7 @@
 title: "Практика по C"
 sub_title: "Массивы"
 theme:
-  path: themes/latte-projector.yaml
+  path: ../themes/latte-projector.yaml
   override:
     code:
       line_numbers: true
@@ -28,7 +28,7 @@ int array_max(const int *a, size_t n);
 ===============
 
 ```file
-path: arrays/task01.c
+path: task01.c
 language: c
 start_line: 4
 end_line: 21
@@ -53,7 +53,7 @@ end_line: 21
 ===============
 
 ```file
-path: arrays/task02.c
+path: task02.c
 language: c
 start_line: 3
 end_line: 9
@@ -78,7 +78,7 @@ end_line: 9
 ===============
 
 ```file
-path: arrays/task03.c
+path: task03.c
 language: c
 start_line: 3
 end_line: 18
@@ -103,7 +103,7 @@ end_line: 18
 ===============
 
 ```file
-path: arrays/task04.c
+path: task04.c
 language: c
 start_line: 3
 end_line: 15
@@ -128,7 +128,7 @@ end_line: 15
 ===============
 
 ```file
-path: arrays/task05.c
+path: task05.c
 language: c
 start_line: 3
 end_line: 15

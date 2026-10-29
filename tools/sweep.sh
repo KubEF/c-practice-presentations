@@ -8,8 +8,8 @@
 #
 # Usage: tools/sweep.sh <deck.md> [width] [slides] [presenterm args...]
 #
-#   tools/sweep.sh pointers-presentation.md 170 30 -x | less -R
-#   tools/sweep.sh presentation.md 120 30 -x -X
+#   tools/sweep.sh pointers/presentation.md 170 30 -x | less -R
+#   tools/sweep.sh intro/presentation.md 120 30 -x -X
 set -euo pipefail
 
 here=$(cd "$(dirname "$0")" && pwd)
