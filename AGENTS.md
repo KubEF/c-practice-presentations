@@ -30,6 +30,11 @@ compilation/               compilation task deck (exec-free)
   examples/                original lecture examples Ex1–Ex6 used by the slides
 bitops-floats/             bit operations and floats (exec-free, link with -lm)
 spare/                     spare tasks for a fast group (exec-free)
+adt/                       list ADT deck (exec-free); one program instead of taskNN.c:
+  list.h, list_array.c,    the interface and two implementations, shown on the
+  list_linked.c            answer slides one function (or a few short ones) per slide;
+  main.c                   client that checks both builds print the same; not on slides
+  leak.c                   leak demo: create/push/destroy in an endless loop; not on slides
 themes/latte-projector.yaml  shared theme for pale projectors (see §11)
 tools/                     headless render helpers and contrast checkers (see §9, §11)
 export/                    exported PDF/HTML, ignored by git
@@ -282,6 +287,7 @@ fence. There is no `+dynamic` / `+highlight` flag: ```` ```c +dynamic ```` fails
 
    ```sh
    gcc -Wall -Wextra -std=c17 -fsyntax-only */task*.c */task*/*.c intro/*.c
+   for i in array linked; do gcc -Wall -Wextra -std=c17 adt/main.c adt/list_$i.c -o /tmp/$i && /tmp/$i; done
    gcc -Wall -Wextra -std=c17 pointers/task11.c -o /tmp/t11 && /tmp/t11
    ```
 
