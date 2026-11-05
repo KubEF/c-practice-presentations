@@ -1,6 +1,6 @@
 ---
 title: "Практика по C"
-sub_title: "Компиляция: от исходника до программы"
+sub_title: "Компиляция: от исходника до программы \n https://github.com/KubEF/c-practice-presentations/"
 theme:
   path: ../themes/latte-projector.yaml
   override:
