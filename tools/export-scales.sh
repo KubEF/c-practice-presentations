@@ -46,7 +46,12 @@ mkdir -p "$outdir"
 # конфиг, что передан через --config-file (без смешивания), поэтому блок fonts
 # дублируем в генерируемый конфиг — иначе экспорт из скрипта отличается от
 # экспорта вручную. Без шрифта на месте просто экспорт без fonts.
-font_dir=${JETBRAINS_FONT_DIR:-/usr/share/fonts/TTF}
+# Копия без лигатур (`->`, `==` иначе склеиваются): tools/nolig-fonts.py,
+# собирается при первом экспорте.
+font_dir=${JETBRAINS_FONT_DIR:-$HOME/.local/share/presenterm/fonts}
+if [ ! -f "$font_dir/JetBrainsMonoNerdFontMono-Regular.ttf" ] && [ -z "${JETBRAINS_FONT_DIR:-}" ]; then
+    "$here/nolig-fonts.py" /usr/share/fonts/TTF "$font_dir" >&2 || true
+fi
 if [ ! -f "$font_dir/JetBrainsMonoNerdFontMono-Regular.ttf" ]; then
     echo "предупреждение: JetBrains Mono не найден в $font_dir —" \
         "PDF уйдёт на системный моноширинный шрифт" >&2

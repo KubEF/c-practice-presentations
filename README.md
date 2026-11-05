@@ -22,6 +22,8 @@ AGENTS.md                  # правила создания колод
 Код в экспортированном PDF набран JetBrains Mono: задано в `export.pdf.fonts`
 глобального конфига presenterm. `--config-file` заменяет этот конфиг целиком,
 поэтому блок `fonts` нужно продублировать.
+Лигатуры выключены: шрифт берётся из копии без `calt`, которую делает
+`tools/nolig-fonts.py` (в `~/.local/share/presenterm/fonts`).
 
 ## Тема
 
