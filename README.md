@@ -9,7 +9,8 @@ c-basics/                  # базовые примеры (presenterm -x)
 compilation/               # компиляция; examples/ — исходные примеры с лекции
 bitops-floats/             # битовые операции и float
 spare/                     # запасные задачи
-adt/                       # АТД «список»: list.h, две реализации, main.c
+adt/                       # АТД «список»: list.h, две реализации, main.c;
+                           # tests/run.sh — тест на каждую задачу
 themes/                    # тема latte-projector.yaml, шаблон slides.typ
 tools/                     # прогон, экспорт, сборка typst, проверка контраста
 AGENTS.md                  # правила создания колод

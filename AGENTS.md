@@ -35,6 +35,10 @@ adt/                       list ADT deck (exec-free); one program instead of tas
   list_linked.c            answer slides one function (or a few short ones) per slide;
   main.c                   client that checks both builds print the same; not on slides
   leak.c                   leak demo: create/push/destroy in an endless loop; not on slides
+  tests/                   one minimal self-contained test per task: testNN.c
+                           (assert-based, via list.h only); run.sh builds
+                           tasks 2-5 with list_array.c and 6-9 with list_linked.c under
+                           ASan/UBSan; test01 is compile-only (_Static_assert on prototypes)
 themes/latte-projector.yaml  shared theme for pale projectors (see §11)
 tools/                     headless render helpers and contrast checkers (see §9, §11)
 export/                    exported PDF/HTML, ignored by git
@@ -288,6 +292,7 @@ fence. There is no `+dynamic` / `+highlight` flag: ```` ```c +dynamic ```` fails
    ```sh
    gcc -Wall -Wextra -std=c17 -fsyntax-only */task*.c */task*/*.c intro/*.c
    for i in array linked; do gcc -Wall -Wextra -std=c17 adt/main.c adt/list_$i.c -o /tmp/$i && /tmp/$i; done
+   adt/tests/run.sh                   # or: adt/tests/run.sh 05 09
    gcc -Wall -Wextra -std=c17 pointers/task11.c -o /tmp/t11 && /tmp/t11
    ```
 
