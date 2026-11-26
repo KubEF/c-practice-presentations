@@ -11,6 +11,8 @@ bitops-floats/             # битовые операции и float
 spare/                     # запасные задачи
 adt/                       # АТД «список»: list.h, две реализации, main.c;
                            # tests/run.sh — тест на каждую задачу
+allocators/                # аллокаторы, ASan, make, CMake; practice/ — раздатка
+                           # студентам, solution/ — решения
 themes/                    # тема latte-projector.yaml, шаблон slides.typ
 tools/                     # прогон, экспорт, сборка typst, проверка контраста
 AGENTS.md                  # правила создания колод

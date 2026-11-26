@@ -39,6 +39,16 @@ adt/                       list ADT deck (exec-free); one program instead of tas
                            (assert-based, via list.h only); run.sh builds
                            tasks 2-5 with list_array.c and 6-9 with list_linked.c under
                            ASan/UBSan; test01 is compile-only (_Static_assert on prototypes)
+allocators/                allocators/ASan/make/CMake deck (exec-free); a mini-project
+  practice/                handout given to students before the class: t2.c; bump/ (bump.h,
+                           a bump.c skeleton with only heap and top, main.c, Makefile and
+                           CMakeLists.txt skeletons); arena/ (arena.h from the lecture, an
+                           empty arena.c skeleton, ready main.c and CMakeLists.txt) — students
+                           write only the allocator, the arena and one or two build lines;
+                           each condition slide names the files to edit and to leave alone
+  solution/                reference answers shown on answer slides: fixed t2.c,
+                           bump_naive.c (task 2, no alignment), bump.c (aligned), arena.c,
+                           the full Makefile and CMakeLists.txt; no object files anywhere
 themes/latte-projector.yaml  shared theme for pale projectors (see §11)
 tools/                     headless render helpers and contrast checkers (see §9, §11)
 export/                    exported PDF/HTML, ignored by git
